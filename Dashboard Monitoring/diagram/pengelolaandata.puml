@@ -1,0 +1,37 @@
+@startuml
+
+start
+
+:Upload File ZIP LMS;
+
+:Memilih Semester;
+
+:Memproses File ZIP;
+
+if (File Valid?) then (Ya)
+
+  :Ekstraksi Data LMS;
+
+  :Identifikasi Aktivitas Pembelajaran;
+
+  :Klasifikasi Aktivitas;
+  note right
+    - Materi
+    - Tugas & Evaluasi
+  end note
+
+  :Membentuk Dataset Monitoring;
+
+  :Menyimpan Data Monitoring;
+
+  :Menampilkan Dashboard Monitoring;
+
+else (Tidak)
+
+  :Menampilkan Pesan Error;
+
+endif
+
+stop
+
+@enduml

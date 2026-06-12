@@ -1,0 +1,35 @@
+@startuml
+skinparam defaultFontName "Times New Roman"
+skinparam activityFontSize 11
+
+|User|
+
+start
+
+: Memilih menu Export Data Monitoring;
+
+|Sistem|
+
+: Menampilkan halaman export data;
+
+|User|
+
+: Memilih periode export;
+
+|Sistem|
+
+: Memfilter data monitoring;
+
+: Mengonversi data ke format CSV;
+
+|User|
+
+: Menekan tombol Download Excel;
+
+|Sistem|
+
+: Mengunduh file monitoring;
+
+stop
+@enduml
+```

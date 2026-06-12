@@ -1,0 +1,48 @@
+@startuml
+
+skinparam defaultFontName "Times New Roman"
+skinparam activityFontSize 11
+
+|User|
+
+start
+
+: Membuka Dashboard Monitoring;
+
+|Sistem|
+
+: Menampilkan halaman dashboard;
+
+|User|
+
+: Upload data LMS (ZIP);
+
+: Memilih semester;
+
+|Sistem|
+
+: Membaca file ZIP LMS;
+
+: Mengekstrak data aktivitas pembelajaran;
+
+: Mengklasifikasikan aktivitas
+ke dalam kategori Materi
+dan Tugas & Evaluasi;
+
+: Membentuk dataset monitoring;
+
+: Menyimpan data monitoring;
+
+: Menampilkan card monitoring;
+
+: Menampilkan grafik aktivitas
+per mata kuliah;
+
+: Menampilkan diagram komposisi
+aktivitas;
+
+: Menampilkan tabel rekap monitoring;
+
+stop
+
+@enduml

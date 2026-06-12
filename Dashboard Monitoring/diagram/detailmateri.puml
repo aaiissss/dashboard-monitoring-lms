@@ -1,0 +1,43 @@
+@startuml
+
+skinparam defaultFontName "Times New Roman"
+skinparam activityFontSize 11
+
+|User|
+
+start
+
+: Memilih menu Detail Aktivitas;
+
+|Sistem|
+
+: Menampilkan halaman detail aktivitas;
+
+|User|
+
+: Memasukkan kata kunci pencarian;
+
+|Sistem|
+
+: Menampilkan daftar aktivitas
+sesuai pencarian;
+
+|User|
+
+: Memilih aktivitas;
+
+|Sistem|
+
+: Menampilkan informasi aktivitas;
+
+: Menampilkan mata kuliah;
+
+: Menampilkan kategori aktivitas;
+
+: Menampilkan status aktivitas;
+
+: Menampilkan semester;
+
+stop
+
+@enduml

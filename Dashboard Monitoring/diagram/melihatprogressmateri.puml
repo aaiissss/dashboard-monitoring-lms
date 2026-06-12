@@ -1,0 +1,36 @@
+@startuml
+
+skinparam defaultFontName "Times New Roman"
+skinparam activityFontSize 11
+
+|User|
+
+start
+
+: Memilih menu Progress Aktivitas;
+
+|Sistem|
+
+: Menampilkan halaman progress aktivitas;
+
+: Menampilkan daftar mata kuliah;
+
+|User|
+
+: Memilih mata kuliah;
+
+|Sistem|
+
+: Menampilkan total aktivitas;
+
+: Menampilkan jumlah kategori Materi;
+
+: Menampilkan jumlah kategori
+Tugas & Evaluasi;
+
+: Menampilkan daftar aktivitas
+pada mata kuliah terpilih;
+
+stop
+
+@enduml
