@@ -6,6 +6,7 @@ import tempfile
 import os
 import re
 from io import BytesIO
+from pathlib import Path
 
 def convert_df_to_excel(df):
     output = BytesIO()
@@ -40,7 +41,9 @@ st.markdown("""
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 """, unsafe_allow_html=True)
 
-with open("style.css") as f:
+css_path = Path(__file__).resolve().parent.parent / "style.css"
+
+with css_path.open(encoding="utf-8") as f:
     st.markdown(
         f"<style>{f.read()}</style>",
         unsafe_allow_html=True
