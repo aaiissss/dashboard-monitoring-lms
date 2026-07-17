@@ -6,7 +6,6 @@ import tempfile
 import os
 import re
 from io import BytesIO
-from pathlib import Path
 
 def convert_df_to_excel(df):
     output = BytesIO()
@@ -41,9 +40,7 @@ st.markdown("""
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 """, unsafe_allow_html=True)
 
-css_path = Path(__file__).resolve().parent.parent / "style.css"
-
-with css_path.open(encoding="utf-8") as f:
+with open("style.css") as f:
     st.markdown(
         f"<style>{f.read()}</style>",
         unsafe_allow_html=True
@@ -85,6 +82,7 @@ menu = st.sidebar.radio(
     ]
 )
 
+
 # ======================
 # DASHBOARD
 # ======================
@@ -107,22 +105,6 @@ if menu == "🏠 Dashboard":
 
     uploaded_zip = st.session_state.get("uploaded_zip")
     
-    if uploaded_zip:
-
-        semester_input = st.selectbox(
-            "📚 Pilih Semester",
-            [
-                "Semester 2",
-                "Semester 4",
-                "Semester 6",
-                "Semester 8"
-            ]
-        )
-
-        # proses baca ZIP
-
-    # lanjut proses baca ZIP
-
     # ======================
     # JIKA FILE DIUPLOAD
     # ======================
@@ -137,6 +119,23 @@ if menu == "🏠 Dashboard":
             # ekstrak zip
             with zipfile.ZipFile(uploaded_zip, "r") as zip_ref:
                 zip_ref.extractall(temp_dir)
+            # ======================
+            # DETEKSI FOLDER SEMESTER
+            # ======================
+
+            semester_list = []
+
+            for root, dirs, files in os.walk(temp_dir):
+                for d in dirs:
+                    if d.lower().startswith("semester"):
+                        semester_list.append(d)
+
+            semester_list = sorted(list(set(semester_list)))
+
+            semester_input = st.selectbox(
+                "📚 Pilih Semester",
+                semester_list
+            )
 
             # folder semester
             semester_path = None
@@ -523,9 +522,13 @@ elif menu == "📈 Progress Aktivitas":
         df["course"].unique()
     )
 
-    progress_df = df[
-        df["course"] == course_filter
-    ]
+    progress_df = (
+        df[df["course"] == course_filter]
+        .reset_index(drop=True)
+    )
+
+    # Mulai penomoran dari 1
+    progress_df.index = range(1, len(progress_df) + 1)
 
     total_aktivitas = len(progress_df)
 
